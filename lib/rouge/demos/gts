@@ -122,6 +122,7 @@ export default class UiFormComponent extends Component<UiFormSignature> {
           <button
             class={{styles.submit-button}}
             data-test-button="Submit"
+            disabled={{not this.isFormValid}}
             type="submit"
           >
             {{t "components.ui.form.submit"}}
@@ -130,4 +131,8 @@ export default class UiFormComponent extends Component<UiFormSignature> {
       </form>
     {{/let}}
   </template>
+
+  get isFormValid() {
+    return Object.keys(this.data).length > 0;
+  }
 }
